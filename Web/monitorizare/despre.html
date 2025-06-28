@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Despre Proiect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --header: #4CAF50;
+      --header-text: white;
+    }
+    body.dark {
+      --bg: #121212;
+      --text: #eee;
+      --header: #1f1f1f;
+      --header-text: #fff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background-color: var(--header);
+      color: var(--header-text);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 20px; }
+    nav a {
+      color: var(--header-text);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    .toggle-dark {
+      background: none;
+      border: 2px solid var(--header-text);
+      color: var(--header-text);
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    body.dark .container { background: #1f1f1f; }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p, ul {
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+footer {
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Fix vizibilitate în dark mode pentru footer și secțiuni */
+body.dark .cta,
+body.dark .prezentare,
+body.dark footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+}
+
+body.dark .cta h2,
+body.dark .prezentare p,
+body.dark .prezentare a,
+body.dark footer {
+  color: #ccc;
+}
+
+
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Despre Proiect</h1>
+    <nav>
+      <a href="index.html">Pagina Principală</a>
+      <a href="afisare_date.php">Vizualizare Date</a>
+      <a href="despre.html">Despre</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="toggle-dark" onclick="toggleDarkMode()">Dark Mode</button>
+  </header>
+
+  <div class="container">
+    <h2>IoT și sănătatea</h2>
+    <p>Tehnologia IoT permite monitorizarea continuă a parametrilor vitali, cum ar fi temperatura și pulsul. Aceste date pot fi analizate în timp real, oferind informații valoroase pentru prevenirea problemelor de sănătate.</p>
+
+    <h2>Balbismul și impactul asupra sănătății</h2>
+    <p>Balbismul este o tulburare de vorbire adesea corelată cu stresul și anxietatea. Aceste stări influențează parametri fiziologici precum ritmul cardiac și temperatura corporală.</p>
+
+    <ul>
+      <li>Ritmul cardiac crește în timpul crizelor de anxietate.</li>
+      <li>Temperatura poate fluctua în situații de stres intens.</li>
+      <li>Monitorizarea acestor valori ajută la înțelegerea și gestionarea balbismului.</li>
+    </ul>
+
+    <h2>Scopul proiectului</h2>
+    <p>Proiectul nostru propune un sistem IoT simplu, dar eficient, care măsoară temperatura și pulsul, stochează valorile pe un server și le afișează într-o interfață web ușor de accesat.</p>
+
+    <h2>Tehnologii utilizate</h2>
+    <ul>
+      <li>ESP32 + senzor DHT22 + senzor puls</li>
+      <li>Interfață web HTML/CSS + Chart.js</li>
+      <li>Stocare locală în MySQL prin PHP</li>
+    </ul>
+
+    <h2>Beneficii</h2>
+    <ul>
+      <li>Monitorizare în timp real</li>
+      <li>Feedback instant asupra stării fiziologice</li>
+      <li>Acces de oriunde din rețeaua locală</li>
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 Proiect IoT Monitorizare
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('dark-mode', document.body.classList.contains('dark'));
+    }
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark');
+    }
+  </script>
+</body>
+</html>

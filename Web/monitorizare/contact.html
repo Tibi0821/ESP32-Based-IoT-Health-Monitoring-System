@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --header: #4CAF50;
+      --header-text: white;
+      --accent: #388E3C;
+    }
+    body.dark {
+      --bg: #121212;
+      --text: #eeeeee;
+      --header: #1f1f1f;
+      --header-text: #ffffff;
+      --accent: #4CAF50;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    .navbar {
+      background-color: var(--header);
+      color: var(--header-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    .navbar h1 { font-size: 20px; }
+    .navbar nav a {
+      color: var(--header-text);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+    .navbar nav a:hover { text-decoration: underline; }
+    .toggle-dark {
+      background: none;
+      border: 2px solid var(--header-text);
+      color: var(--header-text);
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    body.dark .container { background: #1f1f1f; }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea, button {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background-color: var(--header);
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: var(--accent);
+    }
+
+    footer {
+      background-color: #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Vizibilitate dark mode footer + elemente */
+    body.dark .container,
+    body.dark footer {
+      background-color: #1f1f1f;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>Contact</h1>
+    <nav>
+      <a href="index.html">Pagina Principală</a>
+      <a href="afisare_date.php">Vizualizare Date</a>
+      <a href="despre.html">Despre</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="toggle-dark" onclick="toggleDarkMode()">Dark Mode</button>
+  </div>
+
+  <div class="container">
+    <h2>Contactează-ne</h2>
+    <form action="#" method="POST">
+      <input type="text" name="nume" placeholder="Nume complet" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <textarea name="mesaj" rows="5" placeholder="Mesajul tău..." required></textarea>
+      <button type="submit">Trimite</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Proiect IoT Monitorizare
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('dark-mode', document.body.classList.contains('dark'));
+    }
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark');
+    }
+  </script>
+</body>
+</html>

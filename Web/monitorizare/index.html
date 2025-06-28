@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitorizare Sistem IoT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --header: #4CAF50;
+      --header-text: white;
+      --accent: #388E3C;
+    }
+    body.dark {
+      --bg: #121212;
+      --text: #eeeeee;
+      --header: #1f1f1f;
+      --header-text: #ffffff;
+      --accent: #4CAF50;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    .navbar {
+      background-color: var(--header);
+      color: var(--header-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    .navbar h1 { font-size: 20px; }
+    .navbar nav a {
+      color: var(--header-text);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+    .navbar nav a:hover { text-decoration: underline; }
+    .toggle-dark {
+      background: none;
+      border: 2px solid var(--header-text);
+      color: var(--header-text);
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .slider {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 800px;
+      margin: 30px auto;
+    }
+    .slider img {
+      width: 30%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .chenare {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+    .chenar {
+      flex: 1 1 280px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.dark .chenar {
+      background: #1f1f1f;
+    }
+    .chenar:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .cta {
+      background-color: #f3f4f6;
+      padding: 30px;
+      text-align: center;
+    }
+    .btn {
+      padding: 12px 25px;
+      background-color: var(--header);
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: var(--accent);
+    }
+
+    .prezentare {
+      margin-top: 20px;
+      color: var(--text);
+      text-align: center;
+    }
+    .prezentare p {
+      margin-bottom: 10px;
+    }
+footer {
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Fix vizibilitate în dark mode pentru footer și secțiuni */
+body.dark .cta,
+body.dark .prezentare,
+body.dark footer {
+  background-color: #1f1f1f;
+  color: #ccc;
+}
+
+body.dark .cta h2,
+body.dark .prezentare p,
+body.dark .prezentare a,
+body.dark footer {
+  color: #ccc;
+}
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>Monitorizare IoT</h1>
+    <nav>
+      <a href="index.html">Pagina Principală</a>
+      <a href="afisare_date.php">Vizualizare Date</a>
+      <a href="despre.html">Despre</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="toggle-dark" onclick="toggleDarkMode()">Dark Mode</button>
+  </div>
+
+  <section class="slider">
+    <img src="imagine1.jpg" alt="Monitorizare temperatură">
+    <img src="imagine2.jpg" alt="Monitorizare puls">
+    <img src="imagine3.jpg" alt="Utilizare practică">
+  </section>
+
+  <section class="chenare">
+    <div class="chenar">
+      <h3>Ce este IoT?</h3>
+      <p>Internetul Lucrurilor conectează senzori și dispozitive inteligente pentru analiză în timp real.</p>
+    </div>
+    <div class="chenar">
+      <h3>Ce monitorizăm?</h3>
+      <p>Temperatură și puls – informații esențiale pentru sănătatea utilizatorului.</p>
+    </div>
+    <div class="chenar">
+      <h3>Unde vedem datele?</h3>
+      <p>Accesează interfața web pentru a vizualiza valorile în timp real sau istoric.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Vrei să vezi datele în timp real?</h2>
+    <a class="btn" href="afisare_date.php">Vezi Datele</a>
+  </section>
+
+  <section class="prezentare">
+    <p>Acest proiect a fost realizat de <strong>Teleki Ferenc Tibor</strong>.</p>
+    <p>Pentru mai multe informații despre proiect:</p>
+    <a href="despre.html" class="btn">Despre Proiect</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Proiect IoT Monitorizare
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('dark-mode', document.body.classList.contains('dark'));
+    }
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.body.classList.add('dark');
+    }
+  </script>
+</body>
+</html>
